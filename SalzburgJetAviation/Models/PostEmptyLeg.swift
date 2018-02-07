@@ -20,7 +20,8 @@ struct PostEmptyLeg: Encodable {
     var departureFlexibility: String
     var destinationTime: String
     var destinationFlexibility: String
-    
+    var departureMinusFlexibility: String
+    var destinationMinusFlexibility: String
 }
 
 struct EditEmptyLeg: Encodable {
@@ -36,5 +37,6 @@ struct EditEmptyLeg: Encodable {
     var departureFlexibility: String
     var destinationTime: String
     var destinationFlexibility: String
-    
+    var departureMinusFlexibility: String
+    var destinationMinusFlexibility: String
 }

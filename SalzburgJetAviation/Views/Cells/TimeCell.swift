@@ -38,6 +38,10 @@ class TimeCell: BaseCell, TimeCellDelegate {
                 menuBar.selectedItem = self.handleGetIndexFromFlexibility(flexibility)
                 
             }
+            
+            if let minusFlexibility = self.emptyLeg?.departureDateTime?.minusFlexibility {
+                minusMenuBar.selectedItem = self.handleGetIndexFromMinusFlexibility(minusFlexibility)
+            }
         }
     }
     
@@ -45,6 +49,12 @@ class TimeCell: BaseCell, TimeCellDelegate {
     
     lazy var menuBar: FlexibleMenuBar = {
         let mb = FlexibleMenuBar()
+        mb.timeCell = self
+        return mb
+    }()
+    
+    lazy var minusMenuBar: MinusFlexibleMenuBar = {
+        let mb = MinusFlexibleMenuBar()
         mb.timeCell = self
         return mb
     }()
@@ -99,13 +109,31 @@ extension TimeCell {
         if menuIndex == 0 {
             self.emptyLeg?.departureDateTime?.flexibility = "0"
         } else if menuIndex == 1 {
-            self.emptyLeg?.departureDateTime?.flexibility = "-3"
+            self.emptyLeg?.departureDateTime?.flexibility = "+3"
         } else if menuIndex == 2 {
-            self.emptyLeg?.departureDateTime?.flexibility = "-6"
+            self.emptyLeg?.departureDateTime?.flexibility = "+6"
         } else if menuIndex == 3 {
-            self.emptyLeg?.departureDateTime?.flexibility = "-12"
+            self.emptyLeg?.departureDateTime?.flexibility = "+12"
         } else {
-            self.emptyLeg?.departureDateTime?.flexibility = "-24"
+            self.emptyLeg?.departureDateTime?.flexibility = "+24"
+        }
+        
+        if let emptyLeg = self.emptyLeg {
+            self.calendarController?.handleSelectedFlexibility(emptyLeg: emptyLeg)
+        }
+    }
+    
+    func scrollToMinusMenuIndex(menuIndex: Int) {
+        if menuIndex == 0 {
+            self.emptyLeg?.departureDateTime?.minusFlexibility = "0"
+        } else if menuIndex == 1 {
+            self.emptyLeg?.departureDateTime?.minusFlexibility = "-3"
+        } else if menuIndex == 2 {
+            self.emptyLeg?.departureDateTime?.minusFlexibility = "-6"
+        } else if menuIndex == 3 {
+            self.emptyLeg?.departureDateTime?.minusFlexibility = "-12"
+        } else {
+            self.emptyLeg?.departureDateTime?.minusFlexibility = "-24"
         }
         
         if let emptyLeg = self.emptyLeg {
@@ -121,6 +149,23 @@ extension TimeCell {
 extension TimeCell {
     
     fileprivate func handleGetIndexFromFlexibility(_ flexibility: String) -> Int {
+        
+        if flexibility == "0" {
+            return 0
+        } else if flexibility == "+3" {
+            return 1
+        } else if flexibility == "+6" {
+            return 2
+        } else if flexibility == "+12" {
+            return 3
+        } else if flexibility == "+24" {
+            return 4
+        }
+        return 0
+        
+    }
+    
+    fileprivate func handleGetIndexFromMinusFlexibility(_ flexibility: String) -> Int {
         
         if flexibility == "0" {
             return 0
@@ -214,7 +259,7 @@ extension TimeCell {
         
         addSubview(timeView)
         
-        _ = timeView.anchor(topAnchor, left: nil, bottom: menuBar.topAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: (DEVICE_WIDTH - 30) * 8 / 10, heightConstant: 0)
+        _ = timeView.anchor(topAnchor, left: nil, bottom: minusMenuBar.topAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: (DEVICE_WIDTH - 30) * 8 / 10, heightConstant: 0)
         timeView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
         
     }
@@ -225,6 +270,17 @@ extension TimeCell {
         
         _ = menuBar.anchor(nil, left: leftAnchor, bottom: bottomAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 40)
         
+        addSubview(minusMenuBar)
+        _ = minusMenuBar.anchor(nil, left: leftAnchor, bottom: menuBar.topAnchor, right: rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: -1, rightConstant: 0, widthConstant: 0, heightConstant: 40)
+        
+        let titleLabel = UILabel()
+        titleLabel.backgroundColor = StyleGuideManager.mainBackgroundColor
+        titleLabel.text = "Flexible:"
+        titleLabel.textColor = .lightGray
+        
+        addSubview(titleLabel)
+        _ = titleLabel.anchor(nil, left: leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 75, heightConstant: 40)
+        titleLabel.centerYAnchor.constraint(equalTo: minusMenuBar.bottomAnchor).isActive = true
     }
 }
 

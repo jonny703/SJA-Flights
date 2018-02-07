@@ -8,6 +8,10 @@
 
 import UIKit
 import KRPullLoader
+import ACETelPrompt
+import AdSupport
+import Firebase
+
 
 class AvailableLegsController: UIViewController {
     
@@ -32,6 +36,8 @@ class AvailableLegsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        handleFirstInstall()
+        
         setupViews()
         handleFetchEmptyLegs()
     }
@@ -40,6 +46,40 @@ class AvailableLegsController: UIViewController {
         self.setupNavBar()
     }
     
+}
+
+extension AvailableLegsController {
+    
+    fileprivate func handleFirstInstall() {
+        
+        guard ReachabilityManager.shared.internetIsUp else { return }
+        
+        if isFirstInstalling() {
+        
+            let uuid: UUID = ASIdentifierManager.shared().advertisingIdentifier
+            let deviceId = uuid.uuidString.md5 as String
+            UserDefaults.standard.setDeviceId(deviceId)
+            
+            let database = Firestore.firestore().collection("users").document()
+            let userId = database.documentID
+            
+            let user = User(userId: userId, username: "anonymous", deviceId: deviceId)
+            guard let userValue = user.dictionary else { return }
+            database.setData(userValue) { (error) in
+                
+                if let error = error {
+                    print("fail to set user", error)
+                } else {
+                    UserDefaults.standard.setAnonymousUser(userId)
+                }
+            }
+        }
+        
+    }
+    
+    private func isFirstInstalling() -> Bool {
+        return UserDefaults.standard.isFirstInstalling()
+    }
 }
 
 //MARK: handle fetch empty legs
@@ -142,15 +182,96 @@ extension AvailableLegsController {
     
     @objc fileprivate func handleCall() {
         let strPhoneNumber = "+4366285809090"
-        if let phoneCallURL = URL(string: "tel://\(strPhoneNumber)") {
-            let application = UIApplication.shared
-            if (application.canOpenURL(phoneCallURL)) {
-                
-                application.open(phoneCallURL, options: [:], completionHandler: nil)
-            }
+        
+        ACETelPrompt.callPhoneNumber(strPhoneNumber, call: { (duration) in
+            
+            print("calling...", duration)
+            self.saveUserCallingCount(duaration: duration)
+            
+        }) {
+            print("user canceled the call")
+//            self.saveUserCallingCount(duaration: 7.67)
         }
+        
+        
     }
     
+    private func saveUserCallingCount(duaration: Double) {
+        
+        let userDefaults = UserDefaults.standard
+        
+        let count = userDefaults.getCallingCount() + 1
+        userDefaults.setCallingCount(count)
+        
+        
+        guard ReachabilityManager.shared.internetIsUp else {
+            return
+        }
+        
+        guard let userId = userDefaults.getAnonymousUser() else { return }
+        
+        let date = getCurrentDate()
+        
+        let callStatus = CallStatus(date: date, duration: duaration)
+        let callCount = CallCount(count: count)
+        
+        guard let callStatusDic = callStatus.dictionary else { return }
+        guard let callCountDic = callCount.dictionary else { return }
+        
+        let baseDatabase = Firestore.firestore()
+        
+        let statusDatabase = baseDatabase.collection("user-calling").document(userId).collection("callingStatus").document()
+        let countDatabase = baseDatabase.collection("user-count").document(userId)
+        
+        var counts = 0
+        
+        statusDatabase.setData(callStatusDic) { (error) in
+            if let error = error {
+                print("fail to set data", error)
+            } else {
+                countDatabase.setData(callCountDic, completion: { (error) in
+                    if let error = error {
+                        print(error)
+                    } else {
+                        baseDatabase.collection("user-count").getDocuments { (snapshot, error) in
+                            
+                            if let error = error {
+                                print(error)
+                            } else {
+                                guard let documents = snapshot?.documents else { return }
+                                for document in documents {
+                                    let countDic = document.data()
+                                    guard let count = countDic["count"] as? Int  else { return }
+                                    counts += count
+                                }
+                                
+                                guard let totalCount = TotalCounts(totalCounts: counts).dictionary else { return }
+                                baseDatabase.collection("sja-flights").document("totalCounts").setData(totalCount, completion: { (error) in
+                                    
+                                    if let error = error {
+                                        print(error)
+                                    } else {
+                                        print("success to set total counts!")
+                                    }
+                                })
+                            }
+                        }
+                    }
+                })
+            }
+        }
+        
+        
+    }
+    
+    private func getCurrentDate() -> String {
+        let timestamp = NSDate().timeIntervalSince1970 as NSNumber
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d.MMM. yyyy HH:mm"
+        let date = Date(timeIntervalSince1970: timestamp.doubleValue)
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
 }
 
 extension AvailableLegsController {

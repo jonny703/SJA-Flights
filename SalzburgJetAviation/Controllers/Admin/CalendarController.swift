@@ -164,7 +164,7 @@ class CalendarController: AdminBaseController {
         self.todayLabel.text = "Today, \(hour):\(minutesFormat)"
         
         let time = Time(hour: hour, minutes: minutesFormat)
-        let departureTime = DateTime(date: today, dateWithYear: todayWithYear, time: time, flexibility: "0", comingDays: 0)
+        let departureTime = DateTime(date: today, dateWithYear: todayWithYear, time: time, flexibility: "0", minusFlexibility: "0", comingDays: 0)
         return departureTime
     }
     

@@ -1,14 +1,14 @@
 //
-//  FlexibleMenuBar.swift
+//  MinusFlexibleMenuBar.swift
 //  SalzburgJetAviation
 //
-//  Created by John Nik on 12/9/17.
-//  Copyright © 2017 johnik703. All rights reserved.
+//  Created by John Nik on 2/7/18.
+//  Copyright © 2018 johnik703. All rights reserved.
 //
 
 import UIKit
 
-class FlexibleMenuBar: MenuBar {
+class MinusFlexibleMenuBar: MenuBar {
     
     var timeCell: TimeCell?
     
@@ -26,7 +26,7 @@ class FlexibleMenuBar: MenuBar {
     override func setupViews() {
         
         self.title = ""
-        self.titleNames = ["Exact", "+3h", "+6h", "+12h", "+24h"]
+        self.titleNames = ["Exact", "-3h", "-6h", "-12h", "-24h"]
         
         super.setupViews()
         
@@ -43,7 +43,8 @@ class FlexibleMenuBar: MenuBar {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        timeCell?.scrollToMenuIndex(menuIndex: indexPath.item)
+        timeCell?.scrollToMinusMenuIndex(menuIndex: indexPath.item)
     }
     
 }
+

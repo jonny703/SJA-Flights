@@ -19,6 +19,54 @@ extension UserDefaults {
         case birthday
         case email
         case password
+        case firstInstalling
+        case callingCount
+        case deviceId
+        case anonymousUser
+    }
+    
+    func setFirstInstalling(value: Bool) {
+        set(value, forKey: UserDefaultsKeys.firstInstalling.rawValue)
+        synchronize()
+    }
+    
+    func isFirstInstalling() -> Bool {
+        return bool(forKey: UserDefaultsKeys.firstInstalling.rawValue)
+    }
+    
+    //MARK: save user calling count
+    func setCallingCount(_ count: Int) {
+        set(count, forKey: UserDefaultsKeys.callingCount.rawValue)
+        synchronize()
+    }
+    
+    func getCallingCount() -> Int {
+        return integer(forKey: UserDefaultsKeys.callingCount.rawValue)
+    }
+    
+    func setAnonymousUser(_ anonymousUser: String) {
+        set(anonymousUser, forKey: UserDefaultsKeys.anonymousUser.rawValue)
+        synchronize()
+    }
+    
+    func getAnonymousUser() -> String? {
+        if let anonymousUser = string(forKey: UserDefaultsKeys.anonymousUser.rawValue) {
+            return anonymousUser
+        }
+        return nil
+    }
+    
+    //MARK: save uuid
+    func setDeviceId(_ deviceId: String) {
+        set(deviceId, forKey: UserDefaultsKeys.deviceId.rawValue)
+        synchronize()
+    }
+    
+    func getDeviceId() -> String? {
+        if let deviceId = string(forKey: UserDefaultsKeys.deviceId.rawValue) {
+            return deviceId
+        }
+        return nil
     }
     
     //MARK: check login

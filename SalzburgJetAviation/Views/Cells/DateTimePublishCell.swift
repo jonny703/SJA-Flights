@@ -45,9 +45,9 @@ class DateTimePublishCell: AircraftPublishCell {
                 
             }
             
-            if let flexibility = dateTime.flexibility {
+            if let flexibility = dateTime.flexibility, let minusFlexibility = dateTime.minusFlexibility {
                 let attributedText = NSMutableAttributedString(string: "Flexibility:", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: UIColor.gray])
-                attributedText.append(NSAttributedString(string: " (\(flexibility)h)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: UIColor.white]))
+                attributedText.append(NSAttributedString(string: " (-\(minusFlexibility)|+\(flexibility)h)", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17), NSAttributedStringKey.foregroundColor: UIColor.white]))
                 let paragraphStrye = NSMutableParagraphStyle()
                 paragraphStrye.alignment = .left
                 

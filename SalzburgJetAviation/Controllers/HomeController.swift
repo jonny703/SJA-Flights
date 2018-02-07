@@ -30,11 +30,6 @@ extension HomeController {
     
     fileprivate func setupControllers() {
         
-//        let wishListControlelr = WishListController()
-//        wishListControlelr.tabBarItem.title = "WishList"
-//        wishListControlelr.tabBarItem.image = UIImage(named: AssetName.blankStar.rawValue)
-//        wishListControlelr.tabBarItem.selectedImage = UIImage(named: AssetName.star.rawValue)
-        
         
         let availableLegsController = AvailableLegsController()
         availableLegsController.tabBarItem.title = "Available Legs"
@@ -62,7 +57,6 @@ extension HomeController {
     fileprivate func setupNavBar() {
         
         navigationController?.isNavigationBarHidden = true
-        
         
     }
 }

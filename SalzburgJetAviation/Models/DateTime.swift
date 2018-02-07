@@ -13,6 +13,7 @@ struct DateTime: Decodable {
     var dateWithYear: String?
     var time: Time?
     var flexibility: String?
+    var minusFlexibility: String?
     var comingDays: Int?
 }
 

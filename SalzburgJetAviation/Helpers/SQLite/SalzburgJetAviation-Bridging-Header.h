@@ -8,3 +8,4 @@
 
 #import "SCSQLite.h"
 #import "SQLiteHelper.h"
+#import <CommonCrypto/CommonCrypto.h>

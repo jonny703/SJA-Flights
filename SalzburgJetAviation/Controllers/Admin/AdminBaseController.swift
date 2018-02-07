@@ -52,6 +52,7 @@ class AdminBaseController: UIViewController {
         let image = UIImage(named: AssetName.cross.rawValue)?.withRenderingMode(.alwaysTemplate)
         button.setImage(image, for: .normal)
         button.tintColor = .lightGray
+        button.contentHorizontalAlignment = .left
         button.addTarget(self, action: #selector(handleDelete), for: .touchUpInside)
         return button
     }()
@@ -102,7 +103,7 @@ class AdminBaseController: UIViewController {
         lineView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         view.addSubview(deleteButton)
-        _ = deleteButton.anchor(nil, left: lineView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 25, heightConstant: 25)
+        _ = deleteButton.anchor(nil, left: lineView.leftAnchor, bottom: nil, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 85, heightConstant: 45)
         deleteButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         
         view.addSubview(backButton)
