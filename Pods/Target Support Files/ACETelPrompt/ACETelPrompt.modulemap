@@ -1,0 +1,6 @@
+framework module ACETelPrompt {
+  umbrella header "ACETelPrompt-umbrella.h"
+
+  export *
+  module * { export * }
+}
