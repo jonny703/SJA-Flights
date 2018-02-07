@@ -152,13 +152,13 @@ extension TimeCell {
         
         if flexibility == "0" {
             return 0
-        } else if flexibility == "+3" {
+        } else if flexibility == "3" {
             return 1
-        } else if flexibility == "+6" {
+        } else if flexibility == "6" {
             return 2
-        } else if flexibility == "+12" {
+        } else if flexibility == "12" {
             return 3
-        } else if flexibility == "+24" {
+        } else if flexibility == "24" {
             return 4
         }
         return 0

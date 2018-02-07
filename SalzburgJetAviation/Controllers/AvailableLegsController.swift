@@ -54,11 +54,12 @@ extension AvailableLegsController {
         
         guard ReachabilityManager.shared.internetIsUp else { return }
         
-        if isFirstInstalling() {
+        if !isFirstInstalling() {
         
+            let userdefaults = UserDefaults.standard
             let uuid: UUID = ASIdentifierManager.shared().advertisingIdentifier
             let deviceId = uuid.uuidString.md5 as String
-            UserDefaults.standard.setDeviceId(deviceId)
+            userdefaults.setDeviceId(deviceId)
             
             let database = Firestore.firestore().collection("users").document()
             let userId = database.documentID
@@ -70,7 +71,8 @@ extension AvailableLegsController {
                 if let error = error {
                     print("fail to set user", error)
                 } else {
-                    UserDefaults.standard.setAnonymousUser(userId)
+                    userdefaults.setAnonymousUser(userId)
+                    userdefaults.setFirstInstalling(value: true)
                 }
             }
         }
@@ -190,7 +192,6 @@ extension AvailableLegsController {
             
         }) {
             print("user canceled the call")
-//            self.saveUserCallingCount(duaration: 7.67)
         }
         
         
