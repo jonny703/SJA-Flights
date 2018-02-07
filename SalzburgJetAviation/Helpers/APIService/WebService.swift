@@ -21,8 +21,8 @@ enum WebService: String {
     case createEmptyLeg = "http://sja.devserver4.com/wp-json/iosapp/v1/legcreate/"
     case deleteLeg = "http://sja.devserver4.com/wp-json/iosapp/v1/delete_leg/"
     
-    case createEmptyLegLongUrl = "http://sja.devserver4.com/wp-json/iosapp/v1/legcreate/?id=nil&aircraft=%d&departureAirport=%d&destinationairport=%d&price=%d&flightHours=%@&flightMinute=%@&departureTime=%@&departureFlexibility=%@&destinationTime=%@&destinationFlexiblity=%@"
-    case editEmptyLegLongUrl = "http://sja.devserver4.com/wp-json/iosapp/v1/legcreate/?id=%d&aircraft=%d&departureAirport=%d&destinationairport=%d&price=%d&flightHours=%@&flightMinute=%@&departureTime=%@&departureFlexibility=%@&destinationTime=%@&destinationFlexiblity=%@"
+    case createEmptyLegLongUrl = "http://sja.devserver4.com/wp-json/iosapp/v1/legcreate/?id=nil&aircraft=%d&departureAirport=%d&destinationairport=%d&price=%d&flightHours=%@&flightMinute=%@&departureTime=%@&departureFlexibility=%@&destinationTime=%@&destinationFlexiblity=%@&departureMinusFlexibility=%@&destinationMinusFlexibility=%@"
+    case editEmptyLegLongUrl = "http://sja.devserver4.com/wp-json/iosapp/v1/legcreate/?id=%d&aircraft=%d&departureAirport=%d&destinationairport=%d&price=%d&flightHours=%@&flightMinute=%@&departureTime=%@&departureFlexibility=%@&destinationTime=%@&destinationFlexiblity=%@&departureMinusFlexibility=%@&destinationMinusFlexibility=%@"
     
     
 }

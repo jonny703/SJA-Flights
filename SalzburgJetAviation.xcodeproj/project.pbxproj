@@ -100,6 +100,14 @@
 		074C37141FDDCEE30058E8CA /* ico-star-b.svg in Resources */ = {isa = PBXBuildFile; fileRef = 074C37071FDDCEE20058E8CA /* ico-star-b.svg */; };
 		078D8F761FE6C4CB00BED5F6 /* HomeEmptyLegCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 078D8F751FE6C4CB00BED5F6 /* HomeEmptyLegCell.swift */; };
 		078D8F781FE82DB800BED5F6 /* sdj_flights.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = 078D8F771FE82DB800BED5F6 /* sdj_flights.sqlite3 */; };
+		07FBE979202A096F00E06474 /* MinusFlexibleMenuBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE978202A096F00E06474 /* MinusFlexibleMenuBar.swift */; };
+		07FBE97C202AC18700E06474 /* Reachibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE97B202AC18600E06474 /* Reachibility.swift */; };
+		07FBE97E202AC18B00E06474 /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE97D202AC18B00E06474 /* ReachabilityManager.swift */; };
+		07FBE980202AC29C00E06474 /* AlertMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE97F202AC29C00E06474 /* AlertMessages.swift */; };
+		07FBE982202AC82500E06474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 07FBE981202AC82500E06474 /* GoogleService-Info.plist */; };
+		07FBE984202AD2F600E06474 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE983202AD2F600E06474 /* User.swift */; };
+		07FBE986202AE3B600E06474 /* CallStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE985202AE3B600E06474 /* CallStatus.swift */; };
+		07FBE988202AE3F400E06474 /* CallCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07FBE987202AE3F400E06474 /* CallCount.swift */; };
 		28947588C04D2E3042B49BED /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072B25A21FE331BC00628F50 /* Pods_OneSignalNotificationServiceExtension.framework */; };
 		4E2AF5B16A8C8F3560EADB91 /* Pods_SalzburgJetAviation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F3ECC0D1DF3F91DD55520F1 /* Pods_SalzburgJetAviation.framework */; };
 /* End PBXBuildFile section */
@@ -231,6 +239,14 @@
 		074C37071FDDCEE20058E8CA /* ico-star-b.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "ico-star-b.svg"; sourceTree = "<group>"; };
 		078D8F751FE6C4CB00BED5F6 /* HomeEmptyLegCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeEmptyLegCell.swift; sourceTree = "<group>"; };
 		078D8F771FE82DB800BED5F6 /* sdj_flights.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = sdj_flights.sqlite3; sourceTree = "<group>"; };
+		07FBE978202A096F00E06474 /* MinusFlexibleMenuBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinusFlexibleMenuBar.swift; sourceTree = "<group>"; };
+		07FBE97B202AC18600E06474 /* Reachibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachibility.swift; sourceTree = "<group>"; };
+		07FBE97D202AC18B00E06474 /* ReachabilityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		07FBE97F202AC29C00E06474 /* AlertMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertMessages.swift; sourceTree = "<group>"; };
+		07FBE981202AC82500E06474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		07FBE983202AD2F600E06474 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		07FBE985202AE3B600E06474 /* CallStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallStatus.swift; sourceTree = "<group>"; };
+		07FBE987202AE3F400E06474 /* CallCount.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CallCount.swift; sourceTree = "<group>"; };
 		0BEC669F1AF0CABDEB10223D /* Pods-OneSignalNotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; path = "Pods/Target Support Files/Pods-OneSignalNotificationServiceExtension/Pods-OneSignalNotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		1966E1E7C932152C1EFC86C0 /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2F3ECC0D1DF3F91DD55520F1 /* Pods_SalzburgJetAviation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SalzburgJetAviation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -323,6 +339,7 @@
 				0736E6271FD86D37003899B5 /* AppDelegate.swift */,
 				0736E62E1FD86D38003899B5 /* Assets.xcassets */,
 				0736E6301FD86D38003899B5 /* LaunchScreen.storyboard */,
+				07FBE981202AC82500E06474 /* GoogleService-Info.plist */,
 				0736E6331FD86D38003899B5 /* Info.plist */,
 			);
 			path = SalzburgJetAviation;
@@ -331,6 +348,7 @@
 		0736E63B1FD86F84003899B5 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				07FBE97A202AC17200E06474 /* NetworkDetect */,
 				072B25A31FE4318500628F50 /* SQLite */,
 				072B25871FE2A8EE00628F50 /* APIService */,
 				0736E63D1FD86F97003899B5 /* Constants */,
@@ -359,6 +377,7 @@
 		0736E63D1FD86F97003899B5 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
+				07FBE97F202AC29C00E06474 /* AlertMessages.swift */,
 				0736E63F1FD86FAE003899B5 /* AssetName.swift */,
 				0736E6401FD86FAE003899B5 /* LocalConstants.swift */,
 				0736E63E1FD86FAE003899B5 /* StyleGuideManager.swift */,
@@ -402,6 +421,7 @@
 			children = (
 				07432A041FDACA7C0053501A /* MenuBar.swift */,
 				07432A101FDAF44D0053501A /* FlexibleMenuBar.swift */,
+				07FBE978202A096F00E06474 /* MinusFlexibleMenuBar.swift */,
 				07432A1C1FDB27000053501A /* RadiusMenubar.swift */,
 				07432A2E1FDCD5590053501A /* SortByMenuBar.swift */,
 				074329EA1FD999C00053501A /* Alerts.swift */,
@@ -455,6 +475,9 @@
 				07432A221FDB36090053501A /* EmptyLeg.swift */,
 				072B258C1FE2CB9F00628F50 /* PostEmptyLeg.swift */,
 				072B259F1FE2EC9000628F50 /* NotificationContent.swift */,
+				07FBE983202AD2F600E06474 /* User.swift */,
+				07FBE985202AE3B600E06474 /* CallStatus.swift */,
+				07FBE987202AE3F400E06474 /* CallCount.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +508,15 @@
 				074C36FE1FDDCEE00058E8CA /* logo.svg */,
 			);
 			path = SVG;
+			sourceTree = "<group>";
+		};
+		07FBE97A202AC17200E06474 /* NetworkDetect */ = {
+			isa = PBXGroup;
+			children = (
+				07FBE97B202AC18600E06474 /* Reachibility.swift */,
+				07FBE97D202AC18B00E06474 /* ReachabilityManager.swift */,
+			);
+			path = NetworkDetect;
 			sourceTree = "<group>";
 		};
 		29BFF57A2E4D0BC84B72A8BB /* Pods */ = {
@@ -616,6 +648,7 @@
 				074C370A1FDDCEE30058E8CA /* ico-x.svg in Resources */,
 				074C37101FDDCEE30058E8CA /* ico-list-b.svg in Resources */,
 				074C370B1FDDCEE30058E8CA /* logo.svg in Resources */,
+				07FBE982202AC82500E06474 /* GoogleService-Info.plist in Resources */,
 				074C37091FDDCEE30058E8CA /* ico-login.svg in Resources */,
 				074C37081FDDCEE30058E8CA /* ico-star-a.svg in Resources */,
 				0736E6321FD86D38003899B5 /* LaunchScreen.storyboard in Resources */,
@@ -642,21 +675,43 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SalzburgJetAviation/Pods-SalzburgJetAviation-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ACETelPrompt/ACETelPrompt.framework",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL/openssl.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/JHTAlertController/JHTAlertController.framework",
 				"${BUILT_PRODUCTS_DIR}/KRPullLoader/KRPullLoader.framework",
 				"${BUILT_PRODUCTS_DIR}/MGSwipeTableCell/MGSwipeTableCell.framework",
 				"${BUILT_PRODUCTS_DIR}/PermissionScope/PermissionScope.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC/GRPCClient.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-ProtoRPC/ProtoRPC.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-RxLibrary/RxLibrary.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ACETelPrompt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JHTAlertController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KRPullLoader.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MGSwipeTableCell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PermissionScope.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GRPCClient.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ProtoRPC.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxLibrary.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -766,9 +821,12 @@
 				0736E64E1FD86FBB003899B5 /* Extension+UIImageView.swift in Sources */,
 				072B257E1FE169B400628F50 /* EstimatedTimeController.swift in Sources */,
 				07432A011FDABF4D0053501A /* Airport.swift in Sources */,
+				07FBE97C202AC18700E06474 /* Reachibility.swift in Sources */,
+				07FBE97E202AC18B00E06474 /* ReachabilityManager.swift in Sources */,
 				0736E6621FD8C52D003899B5 /* WishList.swift in Sources */,
 				072B258B1FE2AACE00628F50 /* WebService.swift in Sources */,
 				07432A131FDB025E0053501A /* HoursView.swift in Sources */,
+				07FBE986202AE3B600E06474 /* CallStatus.swift in Sources */,
 				0736E6431FD86FAE003899B5 /* LocalConstants.swift in Sources */,
 				072B257C1FE166F500628F50 /* EstimatedTimeView.swift in Sources */,
 				072B258D1FE2CB9F00628F50 /* PostEmptyLeg.swift in Sources */,
@@ -778,9 +836,12 @@
 				0736E6521FD86FF5003899B5 /* WishListController.swift in Sources */,
 				072B25861FE1B0BD00628F50 /* SettingPushNotificationCell.swift in Sources */,
 				074329ED1FD99FDD0053501A /* CreateEmptyLegController.swift in Sources */,
+				07FBE979202A096F00E06474 /* MinusFlexibleMenuBar.swift in Sources */,
 				074329EB1FD999C00053501A /* Alerts.swift in Sources */,
 				0736E6281FD86D37003899B5 /* AppDelegate.swift in Sources */,
 				074329FD1FDA04590053501A /* AirportsController.swift in Sources */,
+				07FBE980202AC29C00E06474 /* AlertMessages.swift in Sources */,
+				07FBE984202AD2F600E06474 /* User.swift in Sources */,
 				074329E71FD9875C0053501A /* LoginController.swift in Sources */,
 				074329F51FD9E7F10053501A /* PickAircraftCell.swift in Sources */,
 				072B25A81FE4319B00628F50 /* SQLiteHelper.m in Sources */,
@@ -804,6 +865,7 @@
 				072B25B51FE450F800628F50 /* GlobalFunctions.swift in Sources */,
 				07432A1F1FDB290E0053501A /* PublishController.swift in Sources */,
 				07432A171FDB08D20053501A /* MinutesView.swift in Sources */,
+				07FBE988202AE3F400E06474 /* CallCount.swift in Sources */,
 				072B25A01FE2EC9000628F50 /* NotificationContent.swift in Sources */,
 				072B257A1FE165C700628F50 /* EstimatedMinutesView.swift in Sources */,
 				07432A091FDACABB0053501A /* BaseCell.swift in Sources */,

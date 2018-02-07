@@ -72,20 +72,6 @@ class CreateEmptyLegController: UIViewController {
 //MARK: handle fetch empty legs
 extension CreateEmptyLegController {
     
-    
-//    private func getSortedAircraftLegs(_ emptyLegs: [EmptyLeg]) -> [EmptyLeg] {
-//
-//        emptyLegs.sort { (leg1, leg2) -> Bool in
-//
-//            guard let name1 = leg1.aircraft?.name, let name2 = leg2.aircraft?.name else { return false }
-//
-//            return name1 < name2
-//        }
-//
-//        return emptyLegs
-//
-//    }
-    
     fileprivate func handleFetchEmptyLegs() {
         
         APIService.sharedInstance.fetchEmptyLegs { (emptyLegs: [EmptyLeg]) in

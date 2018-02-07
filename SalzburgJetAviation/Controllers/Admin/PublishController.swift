@@ -296,21 +296,21 @@ extension PublishController {
     
     private func handleCreateEmptyLeg() {
         
-        guard let aircraft = self.emptyLeg?.aircraft?.id, let departureAirport = emptyLeg?.departureAirport?.id, let destinationAirport = emptyLeg?.destinationAirport?.id, let flightHours = emptyLeg?.estimatedFlightTime?.hour, let flightMinute = emptyLeg?.estimatedFlightTime?.minutes, let departureDate = emptyLeg?.departureDateTime?.dateWithYear, let depatureHour = emptyLeg?.departureDateTime?.time?.hour, let depatureMinutes = emptyLeg?.departureDateTime?.time?.minutes, let flexibility = emptyLeg?.departureDateTime?.flexibility, let price = emptyLeg?.price else { return }
+        guard let aircraft = self.emptyLeg?.aircraft?.id, let departureAirport = emptyLeg?.departureAirport?.id, let destinationAirport = emptyLeg?.destinationAirport?.id, let flightHours = emptyLeg?.estimatedFlightTime?.hour, let flightMinute = emptyLeg?.estimatedFlightTime?.minutes, let departureDate = emptyLeg?.departureDateTime?.dateWithYear, let depatureHour = emptyLeg?.departureDateTime?.time?.hour, let depatureMinutes = emptyLeg?.departureDateTime?.time?.minutes, let flexibility = emptyLeg?.departureDateTime?.flexibility, let price = emptyLeg?.price, let minusFlexibility = emptyLeg?.departureDateTime?.minusFlexibility else { return }
         
         guard let departureTime = self.handleGetDateTimeFormatFrom(date: departureDate, hour: depatureHour, minutes: depatureMinutes) else { return }
         guard let destinationTime = self.handleGetDestinationTime(FromDepartureTime: departureTime, estimatedFlightHours: flightHours, estimatedFlightMinutes: flightMinute) else { return }
         guard let priceNumber = Int(price), let _ = Int(flightHours), let _ = Int(flightMinute) else { return }
             
-        let postEmptyLeg = PostEmptyLeg(id: self.emptyLeg?.id, aircraft: aircraft, departureAirport: departureAirport, destinationairport: destinationAirport, price: priceNumber, flightHours: flightHours, flightMinute: flightMinute , departureTime: departureTime, departureFlexibility: flexibility, destinationTime: destinationTime, destinationFlexibility: flexibility)
+        let postEmptyLeg = PostEmptyLeg(id: self.emptyLeg?.id, aircraft: aircraft, departureAirport: departureAirport, destinationairport: destinationAirport, price: priceNumber, flightHours: flightHours, flightMinute: flightMinute , departureTime: departureTime, departureFlexibility: flexibility, destinationTime: destinationTime, destinationFlexibility: flexibility, departureMinusFlexibility: minusFlexibility, destinationMinusFlexibility: minusFlexibility)
         
         var urlString: String
         
         if self.publishMode == .create {
-            urlString = String(format: WebService.createEmptyLegLongUrl.rawValue, postEmptyLeg.aircraft, postEmptyLeg.departureAirport, postEmptyLeg.destinationairport, postEmptyLeg.price, postEmptyLeg.flightHours, postEmptyLeg.flightMinute, postEmptyLeg.departureTime, postEmptyLeg.departureFlexibility, postEmptyLeg.destinationTime, postEmptyLeg.destinationFlexibility)
+            urlString = String(format: WebService.createEmptyLegLongUrl.rawValue, postEmptyLeg.aircraft, postEmptyLeg.departureAirport, postEmptyLeg.destinationairport, postEmptyLeg.price, postEmptyLeg.flightHours, postEmptyLeg.flightMinute, postEmptyLeg.departureTime, postEmptyLeg.departureFlexibility, postEmptyLeg.destinationTime, postEmptyLeg.destinationFlexibility, postEmptyLeg.departureMinusFlexibility, postEmptyLeg.destinationMinusFlexibility)
         } else {
             guard let id = self.emptyLeg?.id else { return }
-            urlString = String(format: WebService.editEmptyLegLongUrl.rawValue, id, postEmptyLeg.aircraft, postEmptyLeg.departureAirport, postEmptyLeg.destinationairport, postEmptyLeg.price, postEmptyLeg.flightHours, postEmptyLeg.flightMinute, postEmptyLeg.departureTime, postEmptyLeg.departureFlexibility, postEmptyLeg.destinationTime, postEmptyLeg.destinationFlexibility)
+            urlString = String(format: WebService.editEmptyLegLongUrl.rawValue, id, postEmptyLeg.aircraft, postEmptyLeg.departureAirport, postEmptyLeg.destinationairport, postEmptyLeg.price, postEmptyLeg.flightHours, postEmptyLeg.flightMinute, postEmptyLeg.departureTime, postEmptyLeg.departureFlexibility, postEmptyLeg.destinationTime, postEmptyLeg.destinationFlexibility, postEmptyLeg.departureMinusFlexibility, postEmptyLeg.destinationMinusFlexibility)
         }
         
         print("url: ", urlString)
@@ -329,14 +329,6 @@ extension PublishController {
         
         request.addValue(base64String, forHTTPHeaderField: "Authorization")
         request.addValue("multipart/form-data", forHTTPHeaderField: "Content-Type")
-        
-//        do {
-//            let jsonBody = try JSONEncoder().encode(postEmptyLeg)
-//            request.httpBody = jsonBody
-//            print("jsonBody:", jsonBody)
-//        } catch let jsonError {
-//            print("Error serializing encoding empty leg", jsonError)
-//        }
         
         print("post:", postEmptyLeg)
         SVProgressHUD.show()

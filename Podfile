@@ -14,6 +14,10 @@ target 'SalzburgJetAviation' do
   pod 'FSCalendar'
   pod 'OneSignal'
   pod 'PermissionScope'
+  pod 'ACETelPrompt'
+  pod 'Firebase'
+  pod 'Firebase/Database'
+  pod 'Firebase/Firestore'
   
 end
 

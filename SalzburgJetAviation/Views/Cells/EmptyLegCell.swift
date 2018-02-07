@@ -37,8 +37,8 @@ class EmptyLegCell: MGSwipeTableCell {
                 self.departureDateLabel.text = date
             }
             
-            if let departureHour = emptyLeg.departureDateTime?.time?.hour, let departureMinutes = emptyLeg.departureDateTime?.time?.minutes, let departureFlexibility = emptyLeg.departureDateTime?.flexibility {
-                self.departureTimeLabel.text = "\(departureHour):\(departureMinutes) (\(departureFlexibility)|(0h))"
+            if let departureHour = emptyLeg.departureDateTime?.time?.hour, let departureMinutes = emptyLeg.departureDateTime?.time?.minutes, let departureFlexibility = emptyLeg.departureDateTime?.flexibility, let departureMinusFlexibility = emptyLeg.departureDateTime?.minusFlexibility {
+                self.departureTimeLabel.text = "\(departureHour):\(departureMinutes) (\(departureMinusFlexibility)h|+\(departureFlexibility)h)"
             }
             
             if let price = emptyLeg.price {
@@ -54,8 +54,8 @@ class EmptyLegCell: MGSwipeTableCell {
                 self.destinationDateLabel.text = date
             }
             
-            if let destinationHour = emptyLeg.destinationDateTime?.time?.hour, let destinationMinutes = emptyLeg.destinationDateTime?.time?.minutes, let destinationFlexibility = emptyLeg.destinationDateTime?.flexibility {
-                self.destinationTimeLabel.text = "\(destinationHour):\(destinationMinutes) (\(destinationFlexibility)|(0h))"
+            if let destinationHour = emptyLeg.destinationDateTime?.time?.hour, let destinationMinutes = emptyLeg.destinationDateTime?.time?.minutes, let destinationFlexibility = emptyLeg.destinationDateTime?.flexibility, let destinationMinusFlexibility = emptyLeg.destinationDateTime?.minusFlexibility {
+                self.destinationTimeLabel.text = "\(destinationHour):\(destinationMinutes) (\(destinationMinusFlexibility)h|+\(destinationFlexibility)h)"
             }
         }
     }

@@ -249,6 +249,8 @@ extension AirportsController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        view.endEditing(true)
         if let index = self.pickedAirportIndex {
             
             self.filteredPickedAirports[index].isPicked = false
