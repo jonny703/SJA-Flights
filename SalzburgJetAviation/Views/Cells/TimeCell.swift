@@ -35,7 +35,7 @@ class TimeCell: BaseCell, TimeCellDelegate {
             
             if let flexibility = self.emptyLeg?.departureDateTime?.flexibility {
                 
-                menuBar.selectedItem = self.handleGetIndexFromFlexibility(flexibility)
+                menuBar.selectedItem = self.handleGetIndexFromFlexibility("+\(flexibility.trimmingCharacters(in: .whitespacesAndNewlines))")
                 
             }
             
@@ -109,13 +109,13 @@ extension TimeCell {
         if menuIndex == 0 {
             self.emptyLeg?.departureDateTime?.flexibility = "0"
         } else if menuIndex == 1 {
-            self.emptyLeg?.departureDateTime?.flexibility = "+3"
+            self.emptyLeg?.departureDateTime?.flexibility = "3"
         } else if menuIndex == 2 {
-            self.emptyLeg?.departureDateTime?.flexibility = "+6"
+            self.emptyLeg?.departureDateTime?.flexibility = "6"
         } else if menuIndex == 3 {
-            self.emptyLeg?.departureDateTime?.flexibility = "+12"
+            self.emptyLeg?.departureDateTime?.flexibility = "12"
         } else {
-            self.emptyLeg?.departureDateTime?.flexibility = "+24"
+            self.emptyLeg?.departureDateTime?.flexibility = "24"
         }
         
         if let emptyLeg = self.emptyLeg {
@@ -152,13 +152,13 @@ extension TimeCell {
         
         if flexibility == "0" {
             return 0
-        } else if flexibility == "3" {
+        } else if flexibility == "+3" {
             return 1
-        } else if flexibility == "6" {
+        } else if flexibility == "+6" {
             return 2
-        } else if flexibility == "12" {
+        } else if flexibility == "+12" {
             return 3
-        } else if flexibility == "24" {
+        } else if flexibility == "+24" {
             return 4
         }
         return 0

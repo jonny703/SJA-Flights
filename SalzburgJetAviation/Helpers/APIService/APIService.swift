@@ -177,11 +177,6 @@ class APIService: NSObject {
                 
                 let emptyLegs = try JSONDecoder().decode([EmptyLeg].self, from: data)
                 
-//                print("legs: ", emptyLegs)
-                
-//                let jsonString = String(data: data, encoding: .utf8)
-//                print("json: ", jsonString ?? "")
-                
                 self.dismissHud()
                 completion(emptyLegs)
                 

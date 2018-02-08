@@ -92,7 +92,7 @@ class AdminBaseController: UIViewController {
         view.backgroundColor = StyleGuideManager.mainBackgroundColor
         
         view.addSubview(titleLabel)
-        _ = titleLabel.anchor(view.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 30)
+        _ = titleLabel.anchor(view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 200, heightConstant: 30)
         titleLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         
@@ -107,7 +107,7 @@ class AdminBaseController: UIViewController {
         deleteButton.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor).isActive = true
         
         view.addSubview(backButton)
-        _ = backButton.anchor(nil, left: lineView.leftAnchor, bottom: view.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 70, heightConstant: 65)
+        _ = backButton.anchor(nil, left: lineView.leftAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 70, heightConstant: 65)
         
         view.addSubview(checkButton)
         _ = checkButton.anchor(nil, left: nil, bottom: nil, right: lineView.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 70, heightConstant: 65)

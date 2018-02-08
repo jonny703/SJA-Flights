@@ -38,7 +38,7 @@ class EmptyLegCell: MGSwipeTableCell {
             }
             
             if let departureHour = emptyLeg.departureDateTime?.time?.hour, let departureMinutes = emptyLeg.departureDateTime?.time?.minutes, let departureFlexibility = emptyLeg.departureDateTime?.flexibility, let departureMinusFlexibility = emptyLeg.departureDateTime?.minusFlexibility {
-                self.departureTimeLabel.text = "\(departureHour):\(departureMinutes) (\(departureMinusFlexibility)h|+\(departureFlexibility)h)"
+                self.departureTimeLabel.text = "\(departureHour):\(departureMinutes) (\(departureMinusFlexibility)h|+\(departureFlexibility.trimmingCharacters(in: .whitespacesAndNewlines))h)"
             }
             
             if let price = emptyLeg.price {
@@ -55,7 +55,7 @@ class EmptyLegCell: MGSwipeTableCell {
             }
             
             if let destinationHour = emptyLeg.destinationDateTime?.time?.hour, let destinationMinutes = emptyLeg.destinationDateTime?.time?.minutes, let destinationFlexibility = emptyLeg.destinationDateTime?.flexibility, let destinationMinusFlexibility = emptyLeg.destinationDateTime?.minusFlexibility {
-                self.destinationTimeLabel.text = "\(destinationHour):\(destinationMinutes) (\(destinationMinusFlexibility)h|+\(destinationFlexibility)h)"
+                self.destinationTimeLabel.text = "\(destinationHour):\(destinationMinutes) (\(destinationMinusFlexibility)h|+\(destinationFlexibility.trimmingCharacters(in: .whitespacesAndNewlines))h)"
             }
         }
     }

@@ -35,6 +35,8 @@ extension String
     }
 }
 
+
+
 extension String {
     
     func fromBase64() -> String? {

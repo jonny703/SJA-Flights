@@ -139,7 +139,7 @@ extension WishListController {
         
         view.addSubview(scoutLabel)
         
-        _ = scoutLabel.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 35)
+        _ = scoutLabel.anchor(view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 35)
         
         let logoImageView = UIImageView()
         let logoImage = UIImage(named: AssetName.logo.rawValue)

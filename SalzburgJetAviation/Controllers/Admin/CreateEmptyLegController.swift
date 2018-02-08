@@ -162,9 +162,9 @@ extension CreateEmptyLegController: UITableViewDelegate, UITableViewDataSource, 
         let emptyLeg = self.emptyLegs[indexPath.row]
         cell.emptyLeg = emptyLeg
         
-        let removeButton = MGSwipeButton(title: "remove", backgroundColor: StyleGuideManager.mainYellowColor)
+        let removeButton = MGSwipeButton(title: "Remove", backgroundColor: StyleGuideManager.mainYellowColor)
         removeButton.setTitleColor(.darkGray, for: .normal)
-        let editButton = MGSwipeButton(title: "edit", backgroundColor: .clear)
+        let editButton = MGSwipeButton(title: "Edit", backgroundColor: .clear)
 
         cell.rightButtons = [editButton, removeButton]
         cell.tag = indexPath.row
@@ -176,24 +176,6 @@ extension CreateEmptyLegController: UITableViewDelegate, UITableViewDataSource, 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
     }
-    
-    
-//    func swipeTableCell(_ cell: MGSwipeTableCell, swipeButtonsFor direction: MGSwipeDirection, swipeSettings: MGSwipeSettings, expansionSettings: MGSwipeExpansionSettings) -> [UIView]? {
-//
-//        swipeSettings.transition = .border
-//
-//        if direction == MGSwipeDirection.rightToLeft {
-//
-//            let removeButton = MGSwipeButton(title: "remove", backgroundColor: StyleGuideManager.mainYellowColor)
-//            let editButton = MGSwipeButton(title: "edit", backgroundColor: .clear)
-//
-//            return [editButton, removeButton]
-//
-//        } else {
-//            return nil
-//        }
-//
-//    }
     
     func swipeTableCell(_ cell: MGSwipeTableCell, tappedButtonAt index: Int, direction: MGSwipeDirection, fromExpansion: Bool) -> Bool {
 
@@ -300,7 +282,7 @@ extension CreateEmptyLegController {
         
         view.addSubview(logoutView)
         
-        _ = logoutView.anchor(nil, left: nil, bottom: view.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 60, heightConstant: 50)
+        _ = logoutView.anchor(nil, left: nil, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: nil, topConstant: 0, leftConstant: 0, bottomConstant: 5, rightConstant: 0, widthConstant: 60, heightConstant: 50)
         logoutView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         
         
@@ -323,7 +305,7 @@ extension CreateEmptyLegController {
     private func setupNewButton() {
         view.addSubview(newLegButton)
         
-        _ = newLegButton.anchor(view.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 250, heightConstant: 30)
+        _ = newLegButton.anchor(view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 250, heightConstant: 30)
         newLegButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
     }
     

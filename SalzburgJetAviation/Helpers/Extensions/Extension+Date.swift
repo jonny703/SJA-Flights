@@ -8,6 +8,9 @@
 
 import Foundation
 
+
+
+
 extension Date {
     
     var noon: Date {
@@ -30,6 +33,10 @@ extension Date {
         return Calendar.current.component(.month, from: self)
     }
     
+    var year: Int {
+        return Calendar.current.component(.year, from: self)
+    }
+    
     var isLastDayOfMonth: Bool {
         return tomorrow.month != month
     }
@@ -39,4 +46,5 @@ extension Date {
         return Calendar.current.dateComponents([.day], from: date, to: self).day ?? 0
         
     }
+
 }
