@@ -135,7 +135,7 @@ class CalendarController: AdminBaseController {
     func handleGetDateWith(dateWithYear: String) -> Date? {
         
         let yearFormatter = DateFormatter()
-        yearFormatter.dateFormat = "EEE, d.MMM. yyyy"
+        yearFormatter.dateFormat = "d.MMM. yyyy"
         
         if let date = yearFormatter.date(from: dateWithYear) {
             return date
@@ -269,7 +269,12 @@ extension CalendarController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: view.frame.width - 30, height: view.frame.height - 225)
+        
+        let topLayoutHeight = view.safeAreaInsets.top
+        let bottomLayoutHeight = view.safeAreaInsets.bottom
+        
+        return CGSize(width: view.frame.width - 30, height: view.frame.height - 225 - topLayoutHeight - bottomLayoutHeight)
+        
     }
     
     

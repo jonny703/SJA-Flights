@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		071B30B4202BF1EB00CBBA53 /* Extension+Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 071B30B3202BF1EB00CBBA53 /* Extension+Double.swift */; };
 		072B25751FE0C35200628F50 /* MGSwipeTableCell.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 072B25761FE0C35200628F50 /* MGSwipeTableCell.framework */; };
 		072B25781FE1646B00628F50 /* EstimatedHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072B25771FE1646B00628F50 /* EstimatedHoursView.swift */; };
 		072B257A1FE165C700628F50 /* EstimatedMinutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 072B25791FE165C700628F50 /* EstimatedMinutesView.swift */; };
@@ -137,6 +138,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		071B30B3202BF1EB00CBBA53 /* Extension+Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension+Double.swift"; sourceTree = "<group>"; };
 		072B25761FE0C35200628F50 /* MGSwipeTableCell.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MGSwipeTableCell.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		072B25771FE1646B00628F50 /* EstimatedHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatedHoursView.swift; sourceTree = "<group>"; };
 		072B25791FE165C700628F50 /* EstimatedMinutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatedMinutesView.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				0736E6581FD87E87003899B5 /* Extension+UIImage.swift */,
 				07432A181FDB0BDB0053501A /* Extension+UILabel.swift */,
 				072B25B21FE4373100628F50 /* Extension+Codable.swift */,
+				071B30B3202BF1EB00CBBA53 /* Extension+Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -843,6 +846,7 @@
 				07FBE980202AC29C00E06474 /* AlertMessages.swift in Sources */,
 				07FBE984202AD2F600E06474 /* User.swift in Sources */,
 				074329E71FD9875C0053501A /* LoginController.swift in Sources */,
+				071B30B4202BF1EB00CBBA53 /* Extension+Double.swift in Sources */,
 				074329F51FD9E7F10053501A /* PickAircraftCell.swift in Sources */,
 				072B25A81FE4319B00628F50 /* SQLiteHelper.m in Sources */,
 				07432A231FDB36090053501A /* EmptyLeg.swift in Sources */,
@@ -1063,7 +1067,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M89857WV7K;
 				INFOPLIST_FILE = SalzburgJetAviation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.caesar.new;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1086,7 +1090,7 @@
 				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = M89857WV7K;
 				INFOPLIST_FILE = SalzburgJetAviation/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.caesar.new;
 				PRODUCT_NAME = "$(TARGET_NAME)";

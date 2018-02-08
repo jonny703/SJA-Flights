@@ -40,6 +40,7 @@ class AvailableLegsController: UIViewController {
         
         setupViews()
         handleFetchEmptyLegs()
+        
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -183,21 +184,22 @@ extension AvailableLegsController: UITableViewDelegate, UITableViewDataSource {
 extension AvailableLegsController {
     
     @objc fileprivate func handleCall() {
-        let strPhoneNumber = "+4366285809090"
+        let strPhoneNumber = "004366285809090"
         
         ACETelPrompt.callPhoneNumber(strPhoneNumber, call: { (duration) in
             
             print("calling...", duration)
-            self.saveUserCallingCount(duaration: duration)
+            self.saveUserCallingCount(duration: duration.clean)
             
         }) {
             print("user canceled the call")
+//            self.saveUserCallingCount(duration: "33.33")
         }
         
         
     }
     
-    private func saveUserCallingCount(duaration: Double) {
+    private func saveUserCallingCount(duration: String) {
         
         let userDefaults = UserDefaults.standard
         
@@ -213,7 +215,7 @@ extension AvailableLegsController {
         
         let date = getCurrentDate()
         
-        let callStatus = CallStatus(date: date, duration: duaration)
+        let callStatus = CallStatus(date: date, duration: duration)
         let callCount = CallCount(count: count)
         
         guard let callStatusDic = callStatus.dictionary else { return }
@@ -224,7 +226,11 @@ extension AvailableLegsController {
         let statusDatabase = baseDatabase.collection("user-calling").document(userId).collection("callingStatus").document()
         let countDatabase = baseDatabase.collection("user-count").document(userId)
         
-        var counts = 0
+        let year = getYearStringFromDate(Date())
+        let month = getMonthStringFromDate(Date())
+        
+        
+        let analysisDatabase = baseDatabase.collection("sja-flights").document("year-analysis").collection(year).document(month)
         
         statusDatabase.setData(callStatusDic) { (error) in
             if let error = error {
@@ -234,29 +240,34 @@ extension AvailableLegsController {
                     if let error = error {
                         print(error)
                     } else {
-                        baseDatabase.collection("user-count").getDocuments { (snapshot, error) in
+                        
+                        analysisDatabase.getDocument { (snapshot, error) in
                             
                             if let error = error {
                                 print(error)
                             } else {
-                                guard let documents = snapshot?.documents else { return }
-                                for document in documents {
-                                    let countDic = document.data()
-                                    guard let count = countDic["count"] as? Int  else { return }
-                                    counts += count
-                                }
+                                guard let dictionary = snapshot?.data() else { return }
+                                guard let count = dictionary["totalCounts"] as? Int else { return }
+                                guard let totalCounts = TotalCounts(totalCounts: count + 1).dictionary else { return }
                                 
-                                guard let totalCount = TotalCounts(totalCounts: counts).dictionary else { return }
-                                baseDatabase.collection("sja-flights").document("totalCounts").setData(totalCount, completion: { (error) in
-                                    
-                                    if let error = error {
-                                        print(error)
-                                    } else {
-                                        print("success to set total counts!")
-                                    }
-                                })
+                                analysisDatabase.setData(totalCounts, completion: nil)
                             }
                         }
+                        
+                        let totalCountDatabase = baseDatabase.collection("sja-flights").document("totalCounts")
+                        totalCountDatabase.getDocument { (snapshot, error) in
+                            if let error = error {
+                                print(error)
+                            } else {
+                                guard let dictionary = snapshot?.data() else { return }
+                                guard let count = dictionary["totalCounts"] as? Int else { return }
+                                guard let totalCounts = TotalCounts(totalCounts: count + 1).dictionary else { return }
+                                
+                                totalCountDatabase.setData(totalCounts, completion: nil)
+                            }
+                        }
+                        
+                        
                     }
                 })
             }
@@ -265,12 +276,33 @@ extension AvailableLegsController {
         
     }
     
-    private func getCurrentDate() -> String {
+    
+}
+
+extension AvailableLegsController {
+    
+    fileprivate func getCurrentDate() -> String {
         let timestamp = NSDate().timeIntervalSince1970 as NSNumber
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "d.MMM. yyyy HH:mm"
         let date = Date(timeIntervalSince1970: timestamp.doubleValue)
         let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    fileprivate func getYearStringFromDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy"
+        let dateString = dateFormatter.string(from: date)
+        
+        return dateString
+    }
+    
+    fileprivate func getMonthStringFromDate(_ date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM"
+        let dateString = dateFormatter.string(from: date)
+        
         return dateString
     }
 }
@@ -315,11 +347,11 @@ extension AvailableLegsController {
         let topContainerViewHeight = 30 + logoImageViewHeight + 10 + 25 + 20 + 0.5 + 10 + 20 + 10 + 30
         
         view.addSubview(topContrainerView)
-        _ = topContrainerView.anchor(view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: topContainerViewHeight)
+        _ = topContrainerView.anchor(view.safeAreaLayoutGuide.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: topContainerViewHeight)
         
         view.addSubview(logoImageView)
         
-        _ = logoImageView.anchor(view.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: logoImageViewWidth, heightConstant: logoImageViewHeight)
+        _ = logoImageView.anchor(view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, topConstant: 30, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: logoImageViewWidth, heightConstant: logoImageViewHeight)
         logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 25).isActive = true
         
         let scoutLabel = UILabel()

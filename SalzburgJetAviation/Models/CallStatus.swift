@@ -11,5 +11,5 @@ import Foundation
 struct CallStatus: Decodable, Encodable {
     
     let date: String
-    let duration: Double
+    let duration: String
 }
